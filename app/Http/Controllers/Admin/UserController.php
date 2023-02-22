@@ -10,8 +10,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('Admin.pages.UserList.index',['users' => User::all()]);
+        $user = User::cursor()->filter(function (User $user)
+        {
+            return $user->id <= 10;
+        });
+       
+        return view('Admin.pages.UserList.index',['users' => $user]);
     }
 
     public function edit($id)

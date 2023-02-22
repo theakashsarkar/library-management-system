@@ -56,7 +56,9 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                         @if ($user->role == 2)
-                                        <td>libiran</td>
+                                            <td>libiran</td>
+                                        @elseif ($user->role == 1)
+                                            <td>admin</td>
                                         @else
                                             <td>user</td>
                                         @endif
