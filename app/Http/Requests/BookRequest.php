@@ -35,7 +35,7 @@ class BookRequest extends FormRequest
             'author_id' => 'required',
             'publishers_id' => 'required',
             'category_id' => 'required',
-            'image' => 'required | image'
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ];
     }
 }

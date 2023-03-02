@@ -55,14 +55,11 @@ class BooksController extends Controller
         $book->datePublish = $request->publish_date;
         $book->totalCopy  = $request->total_copy;
 
-        if($request->image)
+        if ($request->image)
         {
-            $file = $request->file('image');
-            $ext  = $file->getClientOriginalExtension();
-            $name = time(). '.' . $ext;
-            $file->move(public_path('img'), $name);
-            $book->image = $name;
-
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $book->image = $imageName;
         }
         $book->save();
         return redirect('/admin/books')->with('success', 'book successfully create');

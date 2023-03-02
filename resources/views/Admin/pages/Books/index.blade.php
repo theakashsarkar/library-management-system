@@ -203,7 +203,7 @@
                             <label for="LName" class="form-label">Total Copy</label>
                             <input type="text" name="total_copy" class="form-control" id="LName" placeholder="Total copy">
                             @error('total_copy')
-                            <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -247,7 +247,7 @@
                         <div class="mb-3">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Default file input example</label>
-                                <input class="form-control" type="file" id="formFile">
+                                <input class="form-control" type="file" name="image" id="formFile">
                             </div>
                         </div>
                     </div>
@@ -288,6 +288,7 @@
                                     <th>Author Name</th>
                                     <th>publishers</th>
                                     <th>Total Copy</th>
+                                    <th>image</th>
                                     <th>Manage</th>
                                 </tr>
                                 </thead>
@@ -298,6 +299,7 @@
                                         <td>{{ $book->book_name }}</td>
                                         <td>{{ $book->author->Fname }} {{ $book->author->Lname }}</td>
                                         <td>{{ $book->publisher->publisher_name }}</td>
+                                        <td>{<img src="{{ asset('images/'.$book->image) }}" alt="job image" title="job image"></td>
                                         <td>{{ $book->totalCopy }}</td>
                                         <td>
                                             <a href="{{ route('admin.books.edit', $book->id) }} " class="btn btn-success">
